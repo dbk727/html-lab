@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Details</title>
+</head>
+<body align="center">
+<h2>Details of Student</h2>
+
+<form method="GET" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    Name: <input type="text" name="name"><br><br>
+    Email: <input type="email" name="mail"><br><br>
+    Address: <textarea rows="4" name="adrs"></textarea><br><br>
+    
+      Gender:
+      M <input type="radio" value="M" name="gender">
+      F <input type="radio" value="F" name="gender"><br><br>
+
+      DOB: <input type="date" name="dob"><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+
+    if (isset($_REQUEST["name"], $_REQUEST["mail"], $_REQUEST["adrs"], $_REQUEST["gender"], $_REQUEST["dob"])) {  
+        $name = $_REQUEST["name"];
+        $mail = $_REQUEST["mail"];
+        $adrs = $_REQUEST["adrs"];
+        $gen  = $_REQUEST["gender"];
+        $dob  = $_REQUEST["dob"];
+
+      echo "<br><br><b>DETAILS:</b><br><br>";
+      echo "Name: $name <br>";
+       echo "Email ID: $mail <br>";
+       echo "Address: $adrs <br>";
+       echo "Gender: $gen <br>";
+       echo "D.O.B: $dob <br>";
+    } else {
+        echo "<p>Please enter values.</p>";
+    }
+}
+?>
+
+</body>
+</html>
+
